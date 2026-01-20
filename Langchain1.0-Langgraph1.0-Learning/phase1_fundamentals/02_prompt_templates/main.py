@@ -26,20 +26,20 @@ from langchain_core.prompts import (
 
 # 加载环境变量
 load_dotenv()
-GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+DEEPSEEK_API_KEY = os.getenv("DEEPSEEK_API_KEY")
 
-if not GROQ_API_KEY or GROQ_API_KEY == "your_groq_api_key_here":
+if not DEEPSEEK_API_KEY or DEEPSEEK_API_KEY == "your_DEEPSEEK_API_KEY_here":
     raise ValueError(
-        "\n请先在 .env 文件中设置有效的 GROQ_API_KEY\n"
+        "\n请先在 .env 文件中设置有效的 DEEPSEEK_API_KEY\n"
         "访问 https://console.groq.com/keys 获取免费密钥"
     )
 
 # 初始化模型
-model = init_chat_model("groq:llama-3.3-70b-versatile", api_key=GROQ_API_KEY)
+model = init_chat_model("deepseek:deepseek-chat", api_key=DEEPSEEK_API_KEY)
 
-if not GROQ_API_KEY or GROQ_API_KEY == "your_groq_api_key_here_replace_this":
+if not DEEPSEEK_API_KEY or DEEPSEEK_API_KEY == "your_DEEPSEEK_API_KEY_here_replace_this":
     raise ValueError(
-        "\n请先在 .env 文件中设置有效的 GROQ_API_KEY\n"
+        "\n请先在 .env 文件中设置有效的 DEEPSEEK_API_KEY\n"
         "访问 https://console.groq.com/keys 获取免费密钥"
     )
 
@@ -113,7 +113,7 @@ def example_2_prompt_template_basics():
     print("="*70)
 
     # 方法 1：使用 from_template（最简单）
-    print("\n【方法 1：from_template（推荐）】")
+    print("\n【方法 1：from_template（推荐）】 通过PromptTemplate.from_template()得到PromptTemplate对象")
     template1 = PromptTemplate.from_template(
         "将以下文本翻译成{language}：\n{text}"
     )
@@ -125,7 +125,7 @@ def example_2_prompt_template_basics():
     print(f"AI 回复：{response1.content}\n")
 
     # 方法 2：显式指定变量（更严格）
-    print("【方法 2：显式指定变量】")
+    print("【方法 2：显式指定变量】 通过PromptTemplate构造器得到PromptTemplate对象，通过PromptTemplate对象的format函数得到str")
     template2 = PromptTemplate(
         input_variables=["product", "feature"],
         template="为{product}写一句广告语，重点突出{feature}特点。"
@@ -138,7 +138,7 @@ def example_2_prompt_template_basics():
     print(f"AI 回复：{response2.content}\n")
 
     # 方法 3：使用 invoke（直接生成消息）
-    print("【方法 3：使用 invoke（更方便）】")
+    print("【方法 3：使用 invoke（更方便）】通过PromptTemplate的invoke函数得到str")
     template3 = PromptTemplate.from_template(
         "写一首关于{theme}的{style}风格的诗，不超过4行。"
     )
@@ -162,7 +162,7 @@ def example_3_chat_prompt_template():
     print("="*70)
 
     # 方法 1：使用元组格式（最简单，推荐）
-    print("\n【方法 1：元组格式（推荐）】")
+    print("\n【方法 1：元组格式（推荐）】 ChatPromptTemplate.from_messages + chat_template.format_messages")
 
     chat_template = ChatPromptTemplate.from_messages([
         ("system", "你是一个{role}，擅长{expertise}。"),
