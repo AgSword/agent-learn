@@ -31,6 +31,9 @@ langsmith>=0.2.0
 # ⭐⭐⭐ Groq 集成（推荐！免费且超快）
 langchain-groq>=0.2.0
 
+# deepseek 集成
+langchain-deepseek>=0.2.0
+
 # OpenAI 集成
 langchain-openai>=0.2.0
 
@@ -69,8 +72,7 @@ langchain-text-splitters>=0.3.0
 chromadb>=0.5.0
 
 # FAISS - Facebook AI 相似度搜索
-# faiss-cpu>=1.8.0
-faiss-gpu>=1.8.0
+faiss-cpu>=1.8.0
 # 如果有 GPU，使用：faiss-gpu>=1.8.0
 
 # Pinecone - 云向量数据库（需要注册）

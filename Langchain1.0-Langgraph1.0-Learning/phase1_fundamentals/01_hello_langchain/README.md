@@ -50,7 +50,7 @@ model = init_chat_model(
 
 | 参数 | 类型 | 说明 | 默认值 |
 |------|------|------|--------|
-| `model` | `str` | **必需**。格式为 `"provider:model_name"`，如 `"groq:llama-3.3-70b-versatile"` | 无 |
+| `model` | `str` | **必需**。格式为 `"provider:model_name"`，如 `"deepseek:deepseek-chat"` | 无 |
 | `api_key` | `str` | API 密钥。如果不提供，会从环境变量中读取（如 `GROQ_API_KEY`） | `None` |
 | `temperature` | `float` | 控制输出随机性。范围 0.0-2.0。<br>- `0.0`：最确定性<br>- `1.0`：默认，平衡<br>- `2.0`：最随机 | `1.0` |
 | `max_tokens` | `int` | 限制模型输出的最大 token 数量 | 模型默认值 |
@@ -60,7 +60,7 @@ model = init_chat_model(
 
 ```python
 # Groq
-"groq:llama-3.3-70b-versatile"
+"deepseek:deepseek-chat"
 "groq:mixtral-8x7b-32768"
 "groq:gemma2-9b-it"
 
@@ -71,6 +71,8 @@ model = init_chat_model(
 # Anthropic
 "anthropic:claude-sonnet-4-5-20250929"
 
+# Deepseek
+"deepseek:deepseek-chat"
 # 其他提供商...
 ```
 
@@ -89,20 +91,20 @@ import os
 
 # 方式 1：直接传递 API key
 model = init_chat_model(
-    "groq:llama-3.3-70b-versatile",
-    api_key="your-groq-api-key"
+    "deepseek:deepseek-chat",
+    api_key="your-deepseek-api-key"
 )
 
 # 方式 2：从环境变量读取（推荐）
 model = init_chat_model(
-    "groq:llama-3.3-70b-versatile",
-    api_key=os.getenv("GROQ_API_KEY")
+    "deepseek:deepseek-chat",
+    api_key=os.getenv("DEEPSEEK_API_KEY")
 )
 
 # 方式 3：配置温度和 token 限制
 model = init_chat_model(
-    "groq:llama-3.3-70b-versatile",
-    api_key=os.getenv("GROQ_API_KEY"),
+    "deepseek:deepseek-chat",
+    api_key=os.getenv("DEEPSEEK_API_KEY"),
     temperature=0.0,    # 最确定性输出
     max_tokens=500      # 限制输出长度
 )
@@ -165,7 +167,7 @@ response = model.invoke("你的问题或指令")
 ```python
 from langchain.chat_models import init_chat_model
 
-model = init_chat_model("groq:llama-3.3-70b-versatile", api_key="your_key")
+model = init_chat_model("deepseek:deepseek-chat", api_key="your_key")
 
 # 直接传递字符串
 response = model.invoke("什么是机器学习？用一句话解释")
@@ -616,7 +618,7 @@ model = ChatGroq(model="llama-3.3-70b-versatile", api_key="...")
 
 # 新方式（推荐）
 from langchain.chat_models import init_chat_model
-model = init_chat_model("groq:llama-3.3-70b-versatile", api_key="...")
+model = init_chat_model("deepseek:deepseek-chat", api_key="...")
 ```
 
 ### Q2: temperature 参数如何选择？

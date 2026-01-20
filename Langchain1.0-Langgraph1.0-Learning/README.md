@@ -30,19 +30,13 @@ LangChain 1.0 是用于构建 LLM 驱动应用程序的框架的最新主要版�
 
 ```bash
 
-# 2. 创建虚拟环境
+# 1. 创建虚拟环境
 conda create -n langchain-learn python=3.10
 
-# 激活虚拟环境
-# Windows:
-venv\Scripts\activate
-# Unix/macOS:
-source venv/bin/activate
-
-# 3. 安装依赖
+# 2. 安装依赖
 pip install -r requirements.txt
 
-# 4. 配置环境变量
+# 3. 配置环境变量
 cp .env.example .env
 # 编辑 .env 文件，填入你的 API Keys
 ```
@@ -396,6 +390,7 @@ MIT License
 
 ## 🎓 致谢
 
+- https://github.com/BrandPeng/Langchain1.0-Langgraph1.0-Learning.git
 - https://github.com/Mason-zy/Langchain1.0-Study
 - LangChain 官方团队
 
