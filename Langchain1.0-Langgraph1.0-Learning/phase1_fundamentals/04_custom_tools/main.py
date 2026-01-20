@@ -31,16 +31,16 @@ from web_search import web_search
 
 # 加载环境变量
 load_dotenv()
-GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+DEEPSEEK_API_KEY = os.getenv("DEEPSEEK_API_KEY")
 
-if not GROQ_API_KEY or GROQ_API_KEY == "your_groq_api_key_here":
+if not DEEPSEEK_API_KEY or DEEPSEEK_API_KEY == "your_DEEPSEEK_API_KEY_here":
     raise ValueError(
-        "\n请先在 .env 文件中设置有效的 GROQ_API_KEY\n"
+        "\n请先在 .env 文件中设置有效的 DEEPSEEK_API_KEY\n"
         "访问 https://console.groq.com/keys 获取免费密钥"
     )
 
 # 初始化模型
-model = init_chat_model("groq:llama-3.3-70b-versatile", api_key=GROQ_API_KEY)
+model = init_chat_model("deepseek:deepseek-chat", api_key=DEEPSEEK_API_KEY)
 
 
 
@@ -182,7 +182,7 @@ def example_5_bind_tools():
     这是让 AI 使用工具的第一步
     """
     print("\n" + "="*70)
-    print("示例 5：工具绑定到模型（预览）")
+    print("示例 5：工具绑定到模型（预览） model.bind_tools")
     print("="*70)
 
     # 绑定工具到模型
