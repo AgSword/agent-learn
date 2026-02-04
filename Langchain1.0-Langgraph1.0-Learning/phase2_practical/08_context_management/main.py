@@ -19,16 +19,16 @@ from langchain.agents.middleware import SummarizationMiddleware
 
 # 加载环境变量
 load_dotenv()
-GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+DEEPSEEK_API_KEY = os.getenv("DEEPSEEK_API_KEY")
 
-if not GROQ_API_KEY or GROQ_API_KEY == "your_groq_api_key_here":
+if not DEEPSEEK_API_KEY or DEEPSEEK_API_KEY == "your_DEEPSEEK_API_KEY_here":
     raise ValueError(
-        "\n请先在 .env 文件中设置有效的 GROQ_API_KEY\n"
+        "\n请先在 .env 文件中设置有效的 DEEPSEEK_API_KEY\n"
         "访问 https://console.groq.com/keys 获取免费密钥"
     )
 
 # 初始化模型
-model = init_chat_model("groq:llama-3.3-70b-versatile", api_key=GROQ_API_KEY)
+model = init_chat_model("deepseek:deepseek-chat", api_key=DEEPSEEK_API_KEY)
 
 
 
@@ -111,7 +111,7 @@ def example_2_summarization_middleware():
             checkpointer=InMemorySaver(),
         middleware=[
             SummarizationMiddleware(
-                model="groq:llama-3.3-70b-versatile",
+                model="deepseek:deepseek-chat",
                 max_tokens_before_summary=500  # 超过 500 tokens 就摘要
             )
         ]
@@ -176,7 +176,7 @@ agent = create_agent(
     tools=[],
     middleware=[
         SummarizationMiddleware(
-            model="groq:llama-3.3-70b-versatile",  # 摘要模型
+            model="deepseek:deepseek-chat",  # 摘要模型
             max_tokens_before_summary=500,         # 500 tokens 触发
         )
     ],
@@ -316,7 +316,7 @@ def example_6_practical_customer_service():
         checkpointer=InMemorySaver(),
         middleware=[
             SummarizationMiddleware(
-                model="groq:llama-3.3-70b-versatile",
+                model="deepseek:deepseek-chat",
                 max_tokens_before_summary=800  # 适合客服场景
             )
         ]
@@ -356,19 +356,19 @@ def main():
 
     try:
         example_1_problem_unlimited_growth()
-        input("\n按 Enter 继续...")
+        print("\n" + "=" * 70)
 
         example_2_summarization_middleware()
-        input("\n按 Enter 继续...")
+        print("\n" + "=" * 70)
 
         example_3_middleware_parameters()
-        input("\n按 Enter 继续...")
+        print("\n" + "=" * 70)
 
         example_4_manual_trimming()
-        input("\n按 Enter 继续...")
+        print("\n" + "=" * 70)
 
         example_5_comparison()
-        input("\n按 Enter 继续...")
+        print("\n" + "=" * 70)
 
         example_6_practical_customer_service()
 
