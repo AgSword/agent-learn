@@ -26,16 +26,16 @@ import time
 
 # 加载环境变量
 load_dotenv()
-GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+DEEPSEEK_API_KEY = os.getenv("DEEPSEEK_API_KEY")
 
-if not GROQ_API_KEY or GROQ_API_KEY == "your_groq_api_key_here":
+if not DEEPSEEK_API_KEY or DEEPSEEK_API_KEY == "your_DEEPSEEK_API_KEY_here":
     raise ValueError(
-        "\n请先在 .env 文件中设置有效的 GROQ_API_KEY\n"
+        "\n请先在 .env 文件中设置有效的 DEEPSEEK_API_KEY\n"
         "访问 https://console.groq.com/keys 获取免费密钥"
     )
 
 # 初始化模型
-model = init_chat_model("groq:llama-3.3-70b-versatile", api_key=GROQ_API_KEY)
+model = init_chat_model("deepseek:deepseek-chat", api_key=DEEPSEEK_API_KEY)
 
 
 # ==================== 辅助函数 ====================
@@ -477,7 +477,7 @@ def example_7_combined():
     structured_primary = model.with_structured_output(ExtractedData)
 
     # 2. 配置备用模型（也要先创建结构化输出）
-    fallback_model = init_chat_model("groq:llama-3.3-70b-versatile", api_key=GROQ_API_KEY)
+    fallback_model = init_chat_model("deepseek:deepseek-chat", api_key=DEEPSEEK_API_KEY)
     structured_fallback = fallback_model.with_structured_output(ExtractedData)
 
     # 3. 添加重试（在结构化输出之后）
